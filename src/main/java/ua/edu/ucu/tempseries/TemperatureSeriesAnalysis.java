@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     public double[] temperatureSeries;
     public int length;
-    public static double MINT = -273.0;
+    public final double MINT = -273.0;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
