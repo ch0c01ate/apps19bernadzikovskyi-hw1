@@ -13,6 +13,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] tempSeries) {
+        this.temperatureSeries = new double[tempSeries.length];
         System.arraycopy(tempSeries, 0, this.temperatureSeries, 0, tempSeries.length);
         this.length = this.temperatureSeries.length;
         for (double item : this.temperatureSeries) {
