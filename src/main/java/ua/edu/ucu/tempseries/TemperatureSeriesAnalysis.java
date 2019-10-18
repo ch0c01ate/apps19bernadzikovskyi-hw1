@@ -12,9 +12,8 @@ public class TemperatureSeriesAnalysis {
         this.length = 0;
     }
 
-    public TemperatureSeriesAnalysis(double[] tempSeries) {
-        this.temperatureSeries = new double[tempSeries.length];
-        System.arraycopy(tempSeries, 0, this.temperatureSeries, 0, tempSeries.length);
+    public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        this.temperatureSeries = temperatureSeries;
         this.length = this.temperatureSeries.length;
         for (double item : this.temperatureSeries) {
             if (item < MINT) {
