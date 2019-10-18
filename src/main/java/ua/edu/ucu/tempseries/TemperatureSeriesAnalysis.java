@@ -3,9 +3,9 @@ package ua.edu.ucu.tempseries;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    public double[] temperatureSeries;
-    public int length;
-    public static double MINT = -273.0;
+    private static final double MINT = -273.0;
+    private double[] temperatureSeries;
+    private int length;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
@@ -14,7 +14,8 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] tempSeries) {
         this.temperatureSeries = new double[tempSeries.length];
-        System.arraycopy(tempSeries, 0, this.temperatureSeries, 0, tempSeries.length);
+        System.arraycopy(tempSeries, 0,
+                this.temperatureSeries, 0, tempSeries.length);
         this.length = this.temperatureSeries.length;
         for (double item : this.temperatureSeries) {
             if (item < MINT) {
@@ -25,22 +26,22 @@ public class TemperatureSeriesAnalysis {
 
     public double average() {
         isEmpty();
-        double average_value = 0;
+        double averageValue = 0;
         for (double item : this.temperatureSeries) {
-            average_value += item;
+            averageValue += item;
         }
-        return average_value / this.length;
+        return averageValue / this.length;
     }
 
     public double deviation() {
         isEmpty();
         double mean = average();
-        double standard_deviation = 0;
+        double standardDeviation = 0;
         for (double item : this.temperatureSeries) {
-            standard_deviation += (item - mean) * (item - mean);
+            standardDeviation += (item - mean) * (item - mean);
         }
 
-        return Math.sqrt(standard_deviation / (this.length - 1));
+        return Math.sqrt(standardDeviation / (this.length - 1));
     }
 
     public double min() {
@@ -114,17 +115,22 @@ public class TemperatureSeriesAnalysis {
 
     public TempSummaryStatistics summaryStatistics() {
         isEmpty();
-        TempSummaryStatistics tss = new TempSummaryStatistics(average(), deviation(), max(), min());
+        TempSummaryStatistics tss = new TempSummaryStatistics(
+                average(), deviation(), max(), min());
         return tss;
     }
 
     public int addTemps(double... temps) {
         if (this.length + temps.length < this.temperatureSeries.length) {
-            System.arraycopy(temps, 0, this.temperatureSeries, this.length, temps.length);
+            System.arraycopy(temps, 0,
+                    this.temperatureSeries, this.length, temps.length);
         } else {
-            double[] newTemperatureSeries = new double[(this.length + temps.length) * 2];
-            System.arraycopy(this.temperatureSeries, 0, newTemperatureSeries, 0, this.length);
-            System.arraycopy(temps, 0, newTemperatureSeries, this.length, temps.length);
+            double[] newTemperatureSeries = new double[(
+                    this.length + temps.length) * 2];
+            System.arraycopy(this.temperatureSeries, 0,
+                    newTemperatureSeries, 0, this.length);
+            System.arraycopy(temps, 0,
+                    newTemperatureSeries, this.length, temps.length);
             this.temperatureSeries = newTemperatureSeries;
         }
         this.length += temps.length;
