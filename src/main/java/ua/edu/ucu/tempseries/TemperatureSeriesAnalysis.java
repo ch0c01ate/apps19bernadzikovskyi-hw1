@@ -5,15 +5,16 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     public double[] temperatureSeries;
     public int length;
-    public final double MINT = -273.0;
+    public static double MINT = -273.0;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[0];
         this.length = 0;
     }
 
-    public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        this.temperatureSeries = temperatureSeries;
+    public TemperatureSeriesAnalysis(double[] tempSeries) {
+        this.temperatureSeries = new double[tempSeries.length];
+        System.arraycopy(tempSeries, 0, this.temperatureSeries, 0, tempSeries.length);
         this.length = this.temperatureSeries.length;
         for (double item : this.temperatureSeries) {
             if (item < MINT) {
