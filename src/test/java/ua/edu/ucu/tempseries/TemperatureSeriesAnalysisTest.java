@@ -15,8 +15,8 @@ public class TemperatureSeriesAnalysisTest {
 
     @Before
     public void init() {
-        this.arr = new double[] {100.0, -100.0, 123.0, 0.0, -123.0, -5.0, 5.0};
-        this.arrEmpty = new double[] {};
+        this.arr = new double[]{100.0, -100.0, 123.0, 0.0, -123.0, -5.0, 5.0};
+        this.arrEmpty = new double[]{};
         this.seriesAnalysis = new TemperatureSeriesAnalysis(this.arr);
         this.seriesAnalysisEmpty = new TemperatureSeriesAnalysis(this.arrEmpty);
     }
@@ -30,7 +30,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testAverage() {
         double expResult = 0.0;
         double actualResult = seriesAnalysis.average();
-        assertEquals(expResult, actualResult, 0.00001);        
+        assertEquals(expResult, actualResult, 0.00001);
     }
 
     @Test
@@ -63,29 +63,29 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testFindTempsLessThen() {
-        double [] expResult = new double[8];
+        double[] expResult = new double[8];
         expResult[0] = -100.0;
         expResult[1] = -123.0;
         expResult[2] = -5.0;
-        double [] actualResult = seriesAnalysis.findTempsLessThen(0.0);
+        double[] actualResult = seriesAnalysis.findTempsLessThen(0.0);
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Test
     public void testFindTempsGreaterThen() {
-        double [] expResult = new double[8];
+        double[] expResult = new double[8];
         expResult[0] = 100.0;
         expResult[1] = 123.0;
         expResult[2] = 5.0;
-        double [] actualResult = seriesAnalysis.findTempsGreaterThen(0.0);
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(0.0);
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 
     @Test
     public void testSummaryStatistics() {
-        double [] expResult = new double[] {0.0, 91.5678254992804, 123.0, -123.0};
+        double[] expResult = new double[]{0.0, 91.5678254992804, 123.0, -123.0};
         TempSummaryStatistics tsum = seriesAnalysis.summaryStatistics();
-        double [] actualResult = {tsum.getAvgTemp(), tsum.getDevTemp(), tsum.getMaxTemp(), tsum.getMinTemp()};
+        double[] actualResult = {tsum.getAvgTemp(), tsum.getDevTemp(), tsum.getMaxTemp(), tsum.getMinTemp()};
         assertArrayEquals(expResult, actualResult, 0.00001);
     }
 }
